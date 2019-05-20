@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+  backend:
+    image: battleships
+    ports:
+     - "3000:3000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+  redis:
+    image: redis
+
+  frontend:
+    image: battleship-frontend
+    ports:
+    - "8080:8080"
+    depends_on:
+      - backend
